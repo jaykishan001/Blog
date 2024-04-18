@@ -17,6 +17,7 @@ function RTE({name, control, label, defaultValue = ""}) {
                 
                 <Editor 
                 initialValue={defaultValue}
+                apiKey='7oc41s2i1z4ove130ym7wvpsb5xd8ucuhlggm25iamytoxwd'
                 init={
                     {initialValue: defaultValue,
                     height: 500,

@@ -8,7 +8,7 @@ export class AuthService {
     client = new Client();
     account;
 
-    cconstructor() {
+    constructor() {
         this.client
             .setEndpoint(conf.appwriteURl)
             .setProject(conf.appwriteProjectId);
@@ -19,7 +19,7 @@ export class AuthService {
     //async function are used that take some time to complete this async function return the promise
     // await is used to pause the execution of the async function
 
-    async createAccount({ID, email, password}) {
+    async createAccount({ email, password}) {
       
         try {
         const userAccount =  await this.account.create(ID.unique(), email, password)

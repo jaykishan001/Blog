@@ -92,7 +92,7 @@ function PostForm({post}) {
   [watch, setValue, slugTransform])
 
   return (
-    <form onSubmit={handleSubmit(Submit)} className="flex flex-wrap">
+    <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
 
       <div className="w-2/3 px-2">
         <Input
