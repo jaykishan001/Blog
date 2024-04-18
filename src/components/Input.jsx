@@ -19,7 +19,7 @@ const Input = React.forwardRef(function Input({
         ref= {ref}
         id = {id}
         {...props}
-        ></input>
+        />
         </div>
         </>
     )

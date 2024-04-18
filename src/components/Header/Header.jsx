@@ -2,7 +2,7 @@ import React from 'react'
 import authService from '../../appwrite/auth'
 import { useNavigate, Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { Container } from 'postcss';
+import { Container } from '..'
 import Logo from '../Logo';
 import LogoutBtn from './LogoutBtn';
 

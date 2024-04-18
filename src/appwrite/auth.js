@@ -8,22 +8,23 @@ export class AuthService {
     client = new Client();
     account;
 
-    constructor() {
+    cconstructor() {
         this.client
-        
             .setEndpoint(conf.appwriteURl)
             .setProject(conf.appwriteProjectId);
         
             this.account = new Account(this.client);  
     }
     //we don't want dependiencies so we create a methdo which is working like a wrapper in this we call all services
+    //async function are used that take some time to complete this async function return the promise
+    // await is used to pause the execution of the async function
 
     async createAccount({ID, email, password}) {
       
         try {
         const userAccount =  await this.account.create(ID.unique(), email, password)
         if(userAccount) {
-            //call other method
+            //if the account is created we directly pass the login the user by call new function
             return this.login({email, password});
         }
         else {
@@ -52,9 +53,9 @@ export class AuthService {
     // if we are on home page we need to check are we login or not 
     async getCurrentUser() {
         try {
-           return await this.account.get()
+            return await this.account.get();
         } catch (error) {
-            throw error;
+            console.log(error);
         }
         return null;
     }

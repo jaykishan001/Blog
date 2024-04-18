@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import authService from '../appwrite/auth'
 import { useDispatch } from 'react-redux'
-import {login as authLogin} from '../store/authSlice'
+import login from '../store/authSlice'
 import { useForm } from 'react-hook-form'
-import {  useNavigate } from 'react-router-dom'
-import Logo from './Logo'
-import { Input } from 'postcss'
+import {  useNavigate, Link } from 'react-router-dom'
+import { Input, Logo } from '../components'
 
 
 function SignUp() {
@@ -19,11 +18,11 @@ function SignUp() {
     const signUp = async (data) => {
         setError("");
         try {
-          const userData = await authService.createAccount(data)
+          const userData = authService.createAccount(data)
           if(userData) {
            const currentUser = await authService.getCurrentUser()
            if(currentUser) {
-            dispatch(authLogin(currentUser));
+            dispatch(login(currentUser));
            }
            navigate("/");
           }

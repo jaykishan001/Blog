@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import conf from './conf/conf'
 import authService from './appwrite/auth'
 import { useDispatch } from 'react-redux'
-import { lgoin, logout } from './store/authSlice'
+import { authLogin , logout } from './store/authSlice'
 import { Outlet } from 'react-router-dom'
 import { Header, Footer } from './components'
 
@@ -17,7 +13,7 @@ function App() {
   authService.getCurrentUser()
     .then((userData) => {
       if(userData) {
-        dispatch(lgoin({userData}));
+        dispatch(authLogin({userData}));
       }
       else{
         dispatch(logout())
@@ -32,7 +28,7 @@ function App() {
       <div className='w-full block'> 
       <Header />
       <main>
-        {/* <Outlet/> */}
+        <Outlet/>
       </main>
       <Footer />
       </div>

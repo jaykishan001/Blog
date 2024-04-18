@@ -1,5 +1,5 @@
-import { Client, Databases, ID ,Query} from "appwrite";
 import conf from "../conf/conf";
+import { Client, ID, Databases, Storage, Query } from "appwrite";
 export class Service {
     client = new Client();
     database;
@@ -10,10 +10,12 @@ export class Service {
         .setEndpoint(conf.appwriteURl)
         .setProject(conf.appwriteProjectId);
 
-        this.database = new Databases(this.client);
-        this.storage = new Storage(this.client);
+        this.database = new Databases(this.client)
+        this.storage = new Storage(this.client)
     }
-
+    // we are using await keyword to wait promise to resolve
+    // if the document is successfully created, the result of that operation is returned as a promise.
+    
     async createPost({title, slug, content, featuredImage, status, userId}) {
         try {
             return await this.database.createDocument(
